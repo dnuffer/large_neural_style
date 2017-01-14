@@ -25,7 +25,7 @@ Please file issues using github.
 
 ## Acknowledgements
 
-vgg19\_normalized.pkl - https://s3.amazonaws.com/lasagne/recipes/pretrained/imagenet/vgg19\_normalized.pkl Prepared from the VGG author's pre-trained network weights by Eben Olson (https://github.com/ebenolson)
+vgg19_normalized.pkl - https://s3.amazonaws.com/lasagne/recipes/pretrained/imagenet/vgg19_normalized.pkl Prepared from the VGG author's pre-trained network weights by Eben Olson (https://github.com/ebenolson)
  
 Inspiration from Lasagne Recipe for Neural Style Transfer - https://github.com/Lasagne/Recipes/blob/master/examples/styletransfer/Art%20Style%20Transfer.ipynb
 
@@ -56,8 +56,8 @@ Next I found that as I used different sized images the different components of t
 
 I modified the style layer loss. As as image size increases, N and M would grow quadratically causing the distribution of weights between layers to shift more heavily the upper layers (where the filter responses are larger before being pooled). I changed N2lM2l to not be squared: NlMl, and removed the ¼ because that is redundant with the loss component weights. 
 I also tried changing the sum of squared differences of the gram matrices to be the mean of squared differences so that the loss would be independent of the number of filters, but this didn't improve things, and as it wasn't necessary for image size independence, I ended up using the sum.
-Finally, I added an extra component to the loss function: the total variation distance across two dimension of the generated image. https://en.wikipedia.org/wiki/Total\_variation#Total\_variation\_for\_functions\_of\_one\_real\_variable 
-Credit for the total variation loss component idea is from the jcjohnson/neural-style/neural\_style.lua code: https://github.com/jcjohnson/neural-style/blob/master/neural\_style.lua. 
+Finally, I added an extra component to the loss function: the total variation distance across two dimension of the generated image. https://en.wikipedia.org/wiki/Total_variation#Total_variation_for_functions_of_one_real_variable 
+Credit for the total variation loss component idea is from the jcjohnson/neural-style/neural\_style.lua code: https://github.com/jcjohnson/neural-style/blob/master/neural_style.lua. 
 I use the mean square of the total variation so that it is image size independent.
 
 In the paper, the authors start the optimization from an initially random image.
@@ -74,20 +74,20 @@ After finishing the code, I proceeded to generate a lot of images using multiple
 ## Future Directions
 
 I would like to explore:
-Normalize gradients as found in https://github.com/jcjohnson/neural-style/blob/master/neural\_style.lua 
-Normalize gram matrix values as found in https://github.com/andersbll/neural\_artistic\_style/blob/master/style\_network.py 
+Normalize gradients as found in https://github.com/jcjohnson/neural-style/blob/master/neural_style.lua 
+Normalize gram matrix values as found in https://github.com/andersbll/neural\_artistic\_style/blob/master/style_network.py 
 Use different network layers for the style and content and different layer weights to see the effect on the output
 Use a different CNN (e.g. Inception or SqueezeNet) to see if the performance can be improved.
 
 ## Resources
 
-- http://www.cv-foundation.org/openaccess/content\_cvpr\_2016/papers/Gatys\_Image\_Style\_Transfer\_CVPR\_2016\_paper.pdf - Image Style Transfer Using Convolutional Neural Networks. CVPR 2016.
+- http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf - Image Style Transfer Using Convolutional Neural Networks. CVPR 2016.
 - A Neural Algorithm of Artistic Style. https://arxiv.org/pdf/1508.06576v2.pdf 
 - VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION. ICLR 2015. https://arxiv.org/pdf/1409.1556v6.pdf 
-- https://github.com/andersbll/neural\_artistic\_style - Referenced for images and loss function
+- https://github.com/andersbll/neural_artistic_style - Referenced for images and loss function
 - https://github.com/jcjohnson/neural-style - Referenced for images and loss function
 - https://github.com/jcjohnson/neural-style/issues/36 - Discussion about generating large images
-- https://www.reddit.com/r/imagemagick/comments/4r8h0x/how\_to\_crop\_an\_image\_into\_overlapping\_tiles/ - Discussion about generating large images
+- https://www.reddit.com/r/imagemagick/comments/4r8h0x/how_to_crop_an_image_into_overlapping_tiles/ - Discussion about generating large images
 - Lasagne https://github.com/Lasagne/Lasagne - Lightweight library to build and train neural networks in Theano
 - keras http://keras.io/ for the neural network library. "Keras is a minimalist, highly modular neural networks library, written in Python and capable of running on top of either TensorFlow or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research."
 - https://www.tensorflow.org/ "TensorFlow™ is an open source software library for numerical computation using data flow graphs."
